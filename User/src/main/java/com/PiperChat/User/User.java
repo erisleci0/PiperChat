@@ -1,13 +1,11 @@
 package com.PiperChat.User;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -20,8 +18,7 @@ public class User {
     private String lastName;
     private String profilePicture;
     private String bio;
-    private Date dateBirth;
-
+    private LocalDate dateBirth;
 
     public Long getId() {
         return id;
@@ -87,11 +84,11 @@ public class User {
         this.bio = bio;
     }
 
-    public Date getDateBirth() {
+    public LocalDate getDateBirth() {
         return dateBirth;
     }
 
-    public void setDateBirth(Date dateBirth) {
+    public void setDateBirth(LocalDate dateBirth) {
         this.dateBirth = dateBirth;
     }
 }
