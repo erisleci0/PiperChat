@@ -31,4 +31,9 @@ public class UserController {
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error");
     }
+
+    @PostMapping(path = "/users")
+    public ResponseEntity<User> create(@RequestBody User user){
+        return ResponseEntity.status(HttpStatus.CREATED).body(userRepository.save(user));
+    }
 }
