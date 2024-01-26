@@ -1,5 +1,6 @@
-package com.PiperChat.User;
+package com.PiperChat.User.Profile;
 
+import com.PiperChat.User.UserEntity;
 import jakarta.persistence.*;
 
 @Entity

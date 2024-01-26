@@ -1,5 +1,6 @@
 package com.PiperChat.User;
 
+import com.PiperChat.User.Profile.UserProfileDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

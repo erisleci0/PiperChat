@@ -1,4 +1,4 @@
-package com.PiperChat.User;
+package com.PiperChat.User.Profile;
 
 public class UserProfileDTO {
     private String userName;
