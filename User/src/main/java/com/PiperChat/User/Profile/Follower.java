@@ -1,6 +1,6 @@
 package com.PiperChat.User.Profile;
 
-import com.PiperChat.User.UserEntity;
+import com.PiperChat.User.User;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,8 +11,8 @@ public class Follower {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "follower_id")
-    private UserEntity follower;
+    private User follower;
     @ManyToOne
     @JoinColumn(name = "followee_id")
-    private UserEntity followee;
+    private User followee;
 }
