@@ -1,6 +1,7 @@
 package com.PiperChat.User;
 
 import com.PiperChat.User.profile.UserProfileDTO;
+import com.PiperChat.User.role.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -25,6 +26,9 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     @Query("SELECT u.id FROM UserEntity u WHERE u.username = :username")
     Long findUserIdByUsername(@Param("username") String username);
+
+    @Query("SELECT u.role.name FROM UserEntity u WHERE u.username = :username")
+    String findUserRoleByUsername(@Param("username") String username);
 
     Optional<UserEntity> findByUsername(String username);
 

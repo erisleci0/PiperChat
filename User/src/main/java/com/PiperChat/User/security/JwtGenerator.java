@@ -1,6 +1,7 @@
 package com.PiperChat.User.security;
 
 import com.PiperChat.User.UserRepository;
+import com.PiperChat.User.role.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -27,6 +28,7 @@ public class JwtGenerator {
     public String generateToken(Authentication authentication){
         String username = authentication.getName();
         Long userId = userRepository.findUserIdByUsername(username);
+        String role = userRepository.findUserRoleByUsername(username);
         Date currentDate = new Date();
         Date expiredDate = new Date(currentDate.getTime() + SecurityConstants.JWT_EXPIRATION);
 
@@ -34,6 +36,7 @@ public class JwtGenerator {
         return Jwts.builder()
                 .setSubject(username)
                 .claim("userId", userId)
+                .claim("role", role)
                 .setIssuedAt(new Date())
                 .setExpiration(expiredDate)
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
