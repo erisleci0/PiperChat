@@ -19,7 +19,9 @@ public class UserEntity {
     private String username;
     private String email;
     private String password;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
     private String profilePicture;
     private String bio;
