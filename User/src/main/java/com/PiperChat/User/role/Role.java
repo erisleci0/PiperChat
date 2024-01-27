@@ -1,6 +1,6 @@
 package com.PiperChat.User.role;
 
-import com.PiperChat.User.User;
+import com.PiperChat.User.UserEntity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -20,5 +20,5 @@ public class Role {
 
     @OneToMany(mappedBy = "role")
     @JsonBackReference
-    private List<User> users;
+    private List<UserEntity> userEntities;
 }

@@ -17,12 +17,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<User> findAllUsers() {
+    public List<UserEntity> findAllUsers() {
         return userRepository.findAll();
     }
 
     @Override
-    public Optional<User> findUserById(Long id) {
+    public Optional<UserEntity> findUserById(Long id) {
         return userRepository.findById(id);
     }
 
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User createUser(User userEntity) {
+    public UserEntity createUser(UserEntity userEntity) {
         return userRepository.save(userEntity);
     }
 }

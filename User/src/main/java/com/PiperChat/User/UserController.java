@@ -22,11 +22,11 @@ public class UserController {
     }
 
     @GetMapping(path = "/users")
-    public ResponseEntity<List<User>> findAll() {
+    public ResponseEntity<List<UserEntity>> findAll() {
         return ResponseEntity.ok(userService.findAllUsers());
     }
     @GetMapping(path = "/users/{id}")
-    public ResponseEntity<User> findbyId(@PathVariable Long id) {
+    public ResponseEntity<UserEntity> findbyId(@PathVariable Long id) {
         return ResponseEntity.ok(userService.findUserById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User with id " + id + " is not found!")));
     }
 
@@ -41,14 +41,14 @@ public class UserController {
     }
 
     @PostMapping(path = "/users")
-    public ResponseEntity<String> create(@RequestBody User userEntity){
+    public ResponseEntity<String> create(@RequestBody UserEntity userEntity){
 
-        if (userRepository.existsByUserName(userEntity.getUserName()) || userRepository.existsByEmail(userEntity.getEmail())) {
+        if (userRepository.existsByUsername(userEntity.getUsername()) || userRepository.existsByEmail(userEntity.getEmail())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body("Username or email already taken!!");
         }
-        User savedUser = userService.createUser(userEntity);
-        return ResponseEntity.status(HttpStatus.CREATED).body("User created with ID: " + savedUser.getId());
+        UserEntity savedUserEntity = userService.createUser(userEntity);
+        return ResponseEntity.status(HttpStatus.CREATED).body("User created with ID: " + savedUserEntity.getId());
     }
 
 }

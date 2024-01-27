@@ -1,22 +1,22 @@
 package com.PiperChat.User.profile;
 
 public class UserProfileDTO {
-    private String userName;
+    private String username;
     private Long followers;
     private Long following;
 
-    public UserProfileDTO(String userName, Long followers, Long following) {
-        this.userName = userName;
+    public UserProfileDTO(String username, Long followers, Long following) {
+        this.username = username;
         this.followers = followers;
         this.following = following;
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = username;
     }
 
     public Long getFollowers() {

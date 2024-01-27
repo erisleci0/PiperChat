@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
-    List<User> findAllUsers();
-    Optional<User> findUserById(Long id);
+    List<UserEntity> findAllUsers();
+    Optional<UserEntity> findUserById(Long id);
     Optional<UserProfileDTO> findByUserName(String username);
     List<UserProfileDTO> findUserProfile();
-    User createUser(User userEntity);
+    UserEntity createUser(UserEntity userEntity);
 }

@@ -10,24 +10,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-    @Query("SELECT NEW com.PiperChat.User.profile.UserProfileDTO(u.userName, "
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
+    @Query("SELECT NEW com.PiperChat.User.profile.UserProfileDTO(u.username, "
             + "(SELECT COUNT(f1) FROM Follower f1 WHERE f1.followee.id = u.id), "
             + "(SELECT COUNT(f2) FROM Follower f2 WHERE f2.follower.id = u.id)) "
-            + "FROM User u")
+            + "FROM UserEntity u")
     List<UserProfileDTO> findUserProfile();
 
-    @Query("SELECT NEW com.PiperChat.User.profile.UserProfileDTO(u.userName, "
+    @Query("SELECT NEW com.PiperChat.User.profile.UserProfileDTO(u.username, "
             + "(SELECT COALESCE(COUNT(f1), 0) FROM Follower f1 WHERE f1.followee.id = u.id), "
             + "(SELECT COALESCE(COUNT(f2), 0) FROM Follower f2 WHERE f2.follower.id = u.id)) "
-            + "FROM User u WHERE u.userName = :username")
+            + "FROM UserEntity u WHERE u.username = :username")
     Optional<UserProfileDTO> findUserProfileByUsername(String username);
 
-    @Query("SELECT u.id FROM User u WHERE u.userName = :username")
+    @Query("SELECT u.id FROM UserEntity u WHERE u.username = :username")
     Long findUserIdByUsername(@Param("username") String username);
 
-    Optional<User> findByUsername(String username);
+    Optional<UserEntity> findByUsername(String username);
 
-    boolean existsByUserName(String username);
+    boolean existsByUsername(String username);
     boolean existsByEmail(String email);
 }
