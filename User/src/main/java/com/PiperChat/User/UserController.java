@@ -1,13 +1,18 @@
 package com.PiperChat.User;
 
 import com.PiperChat.User.profile.UserProfileDTO;
+import com.PiperChat.User.security.SecurityConstants;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 public class UserController {
@@ -34,10 +39,17 @@ public class UserController {
     public ResponseEntity<UserProfileDTO> findByUsername(@PathVariable String username){
         return ResponseEntity.ok(userService.findByUserName(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User with username " + username + " is not found!")));
     }
+    @GetMapping(path = "/users/profile/{id}")
+    public ResponseEntity<UserEntity> findByTokenId(@PathVariable Long id, @RequestHeader("Authorization") String token){
+        String jwt = token.replace("Bearer", "");
+        Claims claims = Jwts.parserBuilder().setSigningKey(SecurityConstants.JWT_SECRET).build().parseClaimsJws(jwt).getBody();
 
-    @GetMapping(path = "/users/profile")
-    public ResponseEntity<List<UserProfileDTO>> findByUserProfileName(){
-        return ResponseEntity.ok(userService.findUserProfile());
+        Long userId = claims.get("userId", Long.class);
+
+        if (!Objects.equals(id, userId)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.ok(userRepository.findById(userId).orElseThrow(() -> new UsernameNotFoundException("Username not found!")));
     }
 
     @PostMapping(path = "/users")
