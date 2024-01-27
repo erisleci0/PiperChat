@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Optional<UserProfileDTO> findByUserName(String username) {
-        return userRepository.findUserByUsername(username);
+        return userRepository.findUserProfileByUsername(username);
     }
 
     @Override

@@ -21,10 +21,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
             + "(SELECT COALESCE(COUNT(f1), 0) FROM Follower f1 WHERE f1.followee.id = u.id), "
             + "(SELECT COALESCE(COUNT(f2), 0) FROM Follower f2 WHERE f2.follower.id = u.id)) "
             + "FROM User u WHERE u.userName = :username")
-    Optional<UserProfileDTO> findUserByUsername(String username);
+    Optional<UserProfileDTO> findUserProfileByUsername(String username);
 
     @Query("SELECT u.id FROM User u WHERE u.userName = :username")
     Long findUserIdByUsername(@Param("username") String username);
+
+    Optional<User> findByUsername(String username);
 
     boolean existsByUserName(String username);
     boolean existsByEmail(String email);
