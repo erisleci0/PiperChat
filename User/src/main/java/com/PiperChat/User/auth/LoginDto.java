@@ -1,4 +1,4 @@
-package com.PiperChat.User.Auth;
+package com.PiperChat.User.auth;
 
 import lombok.Data;
 

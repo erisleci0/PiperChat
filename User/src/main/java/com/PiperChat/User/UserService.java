@@ -1,6 +1,6 @@
 package com.PiperChat.User;
 
-import com.PiperChat.User.Profile.UserProfileDTO;
+import com.PiperChat.User.profile.UserProfileDTO;
 
 import java.util.List;
 import java.util.Optional;

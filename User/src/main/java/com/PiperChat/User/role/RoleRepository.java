@@ -1,4 +1,4 @@
-package com.PiperChat.User.Role;
+package com.PiperChat.User.role;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

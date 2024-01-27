@@ -1,6 +1,6 @@
 package com.PiperChat.User;
 
-import com.PiperChat.User.Profile.UserProfileDTO;
+import com.PiperChat.User.profile.UserProfileDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

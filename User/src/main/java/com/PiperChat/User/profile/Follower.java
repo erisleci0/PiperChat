@@ -1,4 +1,4 @@
-package com.PiperChat.User.Profile;
+package com.PiperChat.User.profile;
 
 import com.PiperChat.User.User;
 import jakarta.persistence.*;
