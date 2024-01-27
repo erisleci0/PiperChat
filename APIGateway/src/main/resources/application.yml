@@ -1,0 +1,20 @@
+
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: route1
+          uri: http://localhost:8081
+          predicates:
+            - Path=/users/**
+          filters:
+            - AddResponseHeader=X-Custom-Header, ERIS
+        - id: route2
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/auth/**
+          filters:
+            - AddResponseHeader=X-Custom-Header, ERIS
