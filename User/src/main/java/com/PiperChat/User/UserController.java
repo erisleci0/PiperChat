@@ -27,7 +27,14 @@ public class UserController {
     }
 
     @GetMapping(path = "/users")
-    public ResponseEntity<List<UserEntity>> findAll() {
+    public ResponseEntity<List<UserEntity>> findAll(@RequestHeader("Authorization") String token) {
+        String jwt = token.replace("Bearer", "");
+        Claims claims = Jwts.parserBuilder().setSigningKey(SecurityConstants.JWT_SECRET).build().parseClaimsJws(jwt).getBody();
+
+        String role = claims.get("role", String.class);
+        if(role.equals("User")){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
         return ResponseEntity.ok(userService.findAllUsers());
     }
     @GetMapping(path = "/users/{id}")
