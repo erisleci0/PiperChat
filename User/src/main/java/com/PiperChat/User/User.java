@@ -1,5 +1,7 @@
 package com.PiperChat.User;
 
+import com.PiperChat.User.role.Role;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,4 +24,9 @@ public class User {
     private String profilePicture;
     private String bio;
     private LocalDate dateBirth;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    @JsonManagedReference
+    private Role role;
 }
