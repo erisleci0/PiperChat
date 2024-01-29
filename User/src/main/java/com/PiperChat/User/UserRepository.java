@@ -1,7 +1,6 @@
 package com.PiperChat.User;
 
 import com.PiperChat.User.profile.UserProfileDTO;
-import com.PiperChat.User.role.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,6 +16,13 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
             + "(SELECT COUNT(f2) FROM Follower f2 WHERE f2.follower.id = u.id)) "
             + "FROM UserEntity u")
     List<UserProfileDTO> findUserProfile();
+
+    @Query("SELECT NEW com.PiperChat.User.profile.UserProfileDTO(f.followee.username, " +
+            "(SELECT COUNT(f1) FROM Follower f1 WHERE f1.followee.id = f.followee.id), " +
+            "(SELECT COUNT(f2) FROM Follower f2 WHERE f2.follower.id = f.followee.id)) " +
+            "FROM Follower f WHERE f.follower.username = :username")
+    List<UserProfileDTO> findFollowingByUsername(@Param("username") String username);
+
 
     @Query("SELECT NEW com.PiperChat.User.profile.UserProfileDTO(u.username, "
             + "(SELECT COALESCE(COUNT(f1), 0) FROM Follower f1 WHERE f1.followee.id = u.id), "

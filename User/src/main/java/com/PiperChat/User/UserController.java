@@ -41,7 +41,10 @@ public class UserController {
     public ResponseEntity<UserEntity> findbyId(@PathVariable Long id) {
         return ResponseEntity.ok(userService.findUserById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User with id " + id + " is not found!")));
     }
-
+    @GetMapping(path = "/{username}/following")
+    public ResponseEntity<List<UserProfileDTO>> findByFollowing(@PathVariable String username) {
+        return ResponseEntity.ok(userRepository.findFollowingByUsername(username));
+    }
     @GetMapping(path = "/{username}")
     public ResponseEntity<UserProfileDTO> findByUsername(@PathVariable String username){
         return ResponseEntity.ok(userService.findByUserName(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User with username " + username + " is not found!")));
