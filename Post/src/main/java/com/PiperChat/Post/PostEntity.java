@@ -14,8 +14,8 @@ public class PostEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private byte[] content;
-    private LocalDate post_date;
+    private String content;
+    private LocalDate postDate;
     private Boolean isPublic;
 
     private Long userId;
