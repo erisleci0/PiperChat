@@ -1,8 +1,7 @@
-package com.PiperChat.User;
+package com.PiperChat.User.auth;
 
-import com.PiperChat.User.auth.AuthResponseDto;
-import com.PiperChat.User.auth.LoginDto;
-import com.PiperChat.User.auth.RegisterDto;
+import com.PiperChat.User.user.UserEntity;
+import com.PiperChat.User.user.UserRepository;
 import com.PiperChat.User.role.Role;
 import com.PiperChat.User.role.RoleRepository;
 import com.PiperChat.User.security.JwtGenerator;

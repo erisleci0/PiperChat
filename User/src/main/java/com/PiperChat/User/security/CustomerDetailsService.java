@@ -1,7 +1,7 @@
 package com.PiperChat.User.security;
 
-import com.PiperChat.User.UserEntity;
-import com.PiperChat.User.UserRepository;
+import com.PiperChat.User.user.UserEntity;
+import com.PiperChat.User.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

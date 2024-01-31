@@ -1,7 +1,6 @@
 package com.PiperChat.User.security;
 
-import com.PiperChat.User.UserRepository;
-import com.PiperChat.User.role.Role;
+import com.PiperChat.User.user.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

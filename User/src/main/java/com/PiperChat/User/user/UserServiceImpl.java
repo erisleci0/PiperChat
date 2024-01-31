@@ -1,4 +1,4 @@
-package com.PiperChat.User;
+package com.PiperChat.User.user;
 
 import com.PiperChat.User.profile.UserProfileDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired

@@ -1,4 +1,4 @@
-package com.PiperChat.User;
+package com.PiperChat.User.user;
 
 import com.PiperChat.User.profile.UserProfileDTO;
 import org.springframework.data.jpa.repository.JpaRepository;

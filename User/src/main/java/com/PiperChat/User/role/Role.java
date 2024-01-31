@@ -1,6 +1,6 @@
 package com.PiperChat.User.role;
 
-import com.PiperChat.User.UserEntity;
+import com.PiperChat.User.user.UserEntity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;

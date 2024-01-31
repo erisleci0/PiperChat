@@ -1,4 +1,4 @@
-package com.PiperChat.Post;
+package com.PiperChat.User.post;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

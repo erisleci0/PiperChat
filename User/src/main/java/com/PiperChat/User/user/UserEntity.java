@@ -1,4 +1,4 @@
-package com.PiperChat.User;
+package com.PiperChat.User.user;
 
 import com.PiperChat.User.role.Role;
 import com.fasterxml.jackson.annotation.JsonManagedReference;

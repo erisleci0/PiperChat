@@ -1,4 +1,4 @@
-package com.PiperChat.Post;
+package com.PiperChat.User.post;
 
 import java.util.List;
 
