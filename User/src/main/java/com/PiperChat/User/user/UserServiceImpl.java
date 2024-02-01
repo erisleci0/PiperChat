@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService {
     public UserEntity createUser(UserEntity userEntity) {
         return userRepository.save(userEntity);
     }
+
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
 }

@@ -73,4 +73,10 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body("User created with ID: " + savedUserEntity.getId());
     }
 
+    @DeleteMapping(path = "/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
 }

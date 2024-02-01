@@ -1,5 +1,7 @@
 package com.PiperChat.User.post;
 
+import com.PiperChat.User.user.UserEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +19,9 @@ public class PostEntity {
     private String content;
     private LocalDate postDate;
     private Boolean isPublic;
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private UserEntity user;
 }

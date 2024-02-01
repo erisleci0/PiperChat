@@ -11,4 +11,5 @@ public interface UserService {
     Optional<UserProfileDTO> findByUserName(String username);
     List<UserProfileDTO> findUserProfile();
     UserEntity createUser(UserEntity userEntity);
+    void deleteUser(Long id);
 }

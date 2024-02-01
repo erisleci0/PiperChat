@@ -23,7 +23,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
             "FROM Follower f WHERE f.follower.username = :username")
     List<UserProfileDTO> findFollowingByUsername(@Param("username") String username);
 
-
     @Query("SELECT NEW com.PiperChat.User.profile.UserProfileDTO(u.username, "
             + "(SELECT COALESCE(COUNT(f1), 0) FROM Follower f1 WHERE f1.followee.id = u.id), "
             + "(SELECT COALESCE(COUNT(f2), 0) FROM Follower f2 WHERE f2.follower.id = u.id)) "
