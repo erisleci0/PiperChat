@@ -19,4 +19,9 @@ public class PostServiceImpl implements PostService {
     public List<PostEntity> findAllUsers() {
         return postRepository.findAll();
     }
+
+    @Override
+    public void deletePosts(Long id) {
+        postRepository.deleteById(id);
+    }
 }
