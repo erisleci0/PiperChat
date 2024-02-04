@@ -1,5 +1,6 @@
 package com.PiperChat.User.post;
 
+import com.PiperChat.User.user.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,12 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostEntity> findAllUsers() {
+    public List<PostEntity> findAllPosts() {
         return postRepository.findAll();
+    }
+    @Override
+    public PostEntity createPost(PostEntity postEntity) {
+        return postRepository.save(postEntity);
     }
 
     @Override
