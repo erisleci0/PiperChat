@@ -3,6 +3,7 @@ package com.PiperChat.User.user;
 import com.PiperChat.User.post.PostEntity;
 import com.PiperChat.User.role.Role;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -35,6 +36,6 @@ public class UserEntity {
     @JsonManagedReference
     private Role role;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<PostEntity> posts;
 }

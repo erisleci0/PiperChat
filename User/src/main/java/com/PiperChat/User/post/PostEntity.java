@@ -1,8 +1,7 @@
 package com.PiperChat.User.post;
 
 import com.PiperChat.User.user.UserEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +22,6 @@ public class PostEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnoreProperties("posts")
+    @JsonIgnore
     private UserEntity user;
 }
