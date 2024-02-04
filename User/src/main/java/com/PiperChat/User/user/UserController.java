@@ -85,7 +85,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/users/posts")
-    public ResponseEntity<String> createPost(@RequestBody PostEntity postEntity, @RequestHeader("Authorization") String token){
+    public ResponseEntity<UserEntity> createPost(@RequestBody PostEntity postEntity, @RequestHeader("Authorization") String token){
         String jwt = token.replace("Bearer", "");
         Claims claims = Jwts.parserBuilder().setSigningKey(SecurityConstants.JWT_SECRET).build().parseClaimsJws(jwt).getBody();
         Long userId = claims.get("userId", Long.class);
@@ -94,7 +94,7 @@ public class UserController {
         postEntity.setUser(user);
         postService.createPost(postEntity);
 
-        return ResponseEntity.ok("Post created successfully");
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 //    @PutMapping(path = "/users/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 //    public ResponseEntity<UserEntity> update(@PathVariable Long id, @Valid @RequestBody UserEntity userEntity) {
